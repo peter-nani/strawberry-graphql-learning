@@ -1,9 +1,5 @@
 import strawberry
 
-
-# -----------------------------
-# Output Type
-# -----------------------------
 @strawberry.type
 class Student:
     name:str
@@ -15,10 +11,6 @@ STUDENTS = [
      Student(name="peter nani", age=23, id=2),
      ]
 
-
-# -----------------------------
-# Query
-# -----------------------------
 @strawberry.type
 class Query:
     @strawberry.field
