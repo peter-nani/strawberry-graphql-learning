@@ -20,6 +20,10 @@ class Student:
     age:int
     department:Department
 
+    @strawberry.field
+    def Student_info(self)->str:
+        return f"{self.name} {self.age} {self.department}"
+
 SURESH = Manager(
     id=1,
     name="Suresh"
