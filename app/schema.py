@@ -2,10 +2,65 @@ import strawberry
 from strawberry.schema.config import StrawberryConfig
 
 @strawberry.type
+class Manager:
+    id:int
+    name:str
+
+@strawberry.type
+class Department:
+    id:int
+    name:str
+    location:str
+    manager:Manager
+
+@strawberry.type
 class Student:
     id:int
     name:str
     age:int
+    department:Department
+
+SURESH = Manager(
+    id=1,
+    name="Suresh"
+)
+
+RAJESH = Manager(
+    id=2,
+    name="Rajesh"
+)
+
+IT = Department(
+    id=1,
+    name="information tech",
+    location="hyderabad",
+    manager=SURESH
+)
+
+HR = Department(
+    id=2,
+    name="HR",
+    location="Bangalore",
+    manager=RAJESH
+)
+
+STUDENTS = [
+
+    Student(
+        id=1,
+        name="Prasanna",
+        age=30,
+        department=IT,
+    ),
+
+    Student(
+        id=2,
+        name="John",
+        age=25,
+        department=HR,
+    ),
+
+]
 
 @strawberry.input
 class StudentInput:
@@ -13,7 +68,7 @@ class StudentInput:
     name:str
     age:int
 
-STUDENTS = []
+# STUDENTS = []
 
 @strawberry.type
 class Mutation:
